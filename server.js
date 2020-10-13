@@ -15,21 +15,16 @@ app.get("/", function (req, res) {
       `http://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=80ad75f1b05c83787f4bf3956165deca`
     )
     .then((response) => {
-      let wather = {
-        temperature: response.data.main.temp,
-        description: response.data.weather[0].description,
-      };
-      console.log(wather);
       res.send(
         "<html><body>" +
           "<h1>The Wather in " +
           city_name +
           "</h1>" +
           "<h4> temperature: " +
-          wather.temperature +
+          response.data.main.temp +
           "</h4>" +
           "<h4> description: " +
-          wather.description +
+          response.data.weather[0].description +
           "</h4>" +
           "</body></html>"
       );
